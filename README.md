@@ -91,7 +91,8 @@ From the initial part we understood that, we need to measure distance from an im
  - And to put the bounding box perfectly over the image a linear regression classifier is needed to be trained which will output some correction factor.
 Problem with this approch is that one part of the network is dedicated for region proposals. After the full connected layers the model tries to propose certain regions on that image which may contain object/objects. So it also requires a high qulaity classifier to filter out valid proposals which will definitely contains object/objects. Although these methos is very accurate but it comes with a big computational cost (low frame-rate) and that's why it is not suitable for embedded devices such as Arduino or Raspberry Pi which has less processing power.
 <hr>
-#### Localizing with Convolution neural networks
+
+#### Localizing object with Convolution neural networks
 
 Another way of doing object detection and to reduce this tedious work is by combining the previous two task into one network. Here, instead of proposing regions for every images the model is fed with a set of pre-defined boxes to look for objects. So prior to the training phase of a neural network some pre-defined rectangular boxes that represents some objects are given to the network to train with. So when a image is gone through the network, after the fully connected layer the trained model tries to match predefined boxes to objects on that image by using non-maxima suppression algorithm to completely tied. If the comparison crosses some threshold the model tries to draw the bounding box over the object. For example, in the case of the picture of white dog, the model knows what is the coordinates of the box of the dog object and when the image classification is done the model uses L2 distance to calculate the loss between the actual box coordinates that was predefined and the coordinate that the model gave so that it can perfectly draw the bounding box over the object on that image.
 
@@ -112,4 +113,5 @@ This formula is used for determing the distance
 For measuring distance, atfirst we have to understand how a camera sees a object. 
 ![Distance-Measurement](http://muizzer07.pythonanywhere.com/media/files/distance.png)
 Suppose a lens is located at point O. An object at point U is projected by the lens and generates an image plane at M. An image sensor is located at point N on the optical axis of the lens and is inclined by an angle of θ. The sensor and the image plane intersect at point C. The image projected on the sensor is clear only at the horizontal line that passes through point C. All the other parts of the image are blurred because they are defocused. If the length of NC can be calculated, the distance can be expressed as:
-        ![eq-1](http://muizzer07.pythonanywhere.com/media/files/Eq1.gif)
+
+        ![eq-1](http://muizzer07.pythonanywhere.com/media/files/Eq1.gif) as eq-1
