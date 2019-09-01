@@ -12,14 +12,16 @@
     For multiple objects in a image there are two scenarios.
         - Object detection and localization
         - Object segmentation
-![N|Single Object](http://muizzer07.pythonanywhere.com/media/files/puppy-1903313__340.jpg?style=centerme)
 <p align="center"> 
 For Single Objects
 </p> 
 ![N|Single Object](http://muizzer07.pythonanywhere.com/media/files/puppy-1903313__340.jpg?style=centerme)
+
+![N|Multiple Object](http://muizzer07.pythonanywhere.com/media/files/pexels-photo-1108099.jpeg?style=centerme)
 <p align="center"> 
 For Multiple Objects
 </p> 
+
 ## Distance Measurement
 ![N|Multiple Object](http://muizzer07.pythonanywhere.com/media/files/Ultrasonic-Sensor.jpg?style=centerme)
 Traditionally we measure distance of any object using Ultrasonic sensors such as HC-sr04 or other any high frquency devices which generates sound waves to calculates the distance it covers.
