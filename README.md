@@ -4,7 +4,28 @@
 
 
 ## Introduction
-    In a traditional image classification approach for object detection there are two well-known 
+ This repo contains object_detection.py which is able to perform the following task -
+ - Object detection from live video frame, in any video file or in a image
+ - Counting the number of objects in a frame
+ - Measuring the distance of object using depth information
+
+### Instalation
+        $ pip install requirements.txt
+            or
+        $ pip install opencv_python
+        $ pip install numpy
+        $ pip install pandas
+        $ pip install matplotlib
+        $ pip install Pillow
+<hr>
+#### For the installation of torch using "pip" 
+
+    $pip3 install torch===1.2.0 torchvision===0.4.0 -f https://download.pytorch.org/whl/torch_stable.html
+    or please follow the instruction from [Pytorch](https://pytorch.org/)
+
+<hr>
+#### Theory
+In a traditional image classification approach for object detection there are two well-known 
     strategies.
     For single object in a image there are two scenarios.
         - Classification
@@ -31,16 +52,4 @@ However, when you are working with a embedded device to make a compact design wh
     - distance measurement 
 you don't always want to make your device heavier by adding unnnecessary hardware modules. To avoid such cases you can follow another more convinent and feasible apporoach. As you have already integrated a camera for object detection you can use the depth information that camera uses to draw the bounding boxes for localizing objects.
 
-### Instalation
-        $ pip install requirements.txt
-            or
-        $ pip install opencv_python
-        $ pip install numpy
-        $ pip install pandas
-        $ pip install matplotlib
-        $ pip install Pillow
-<hr>
-#### For the installation of torch using "pip" 
 
-    $pip3 install torch===1.2.0 torchvision===0.4.0 -f https://download.pytorch.org/whl/torch_stable.html
-    or please follow the instruction from [Pytorch](https://pytorch.org/)
