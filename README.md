@@ -9,6 +9,16 @@
  - Counting the number of objects in a frame
  - Measuring the distance of object using depth information
  
+For object detection YOLO-V3 has been used which is able to detect 80 different objects. Some of those are-
+- person
+- car
+- bus
+- stop sign
+- bench
+- dog
+- bear
+- backpack and so on.
+
 ### User Instruction
 To execute object_dection.py you require Python version > 3.5 (depends if you are using gpu or not) and have to install the following libraries.
 
@@ -26,10 +36,18 @@ To execute object_dection.py you require Python version > 3.5 (depends if you ar
 
 #### For the installation of torch using "pip" 
 ``` python
-    $pip3 install torch===1.2.0 torchvision===0.4.0 -f https://download.pytorch.org/whl/torch_stable.html
+    $ pip3 install torch===1.2.0 torchvision===0.4.0 -f https://download.pytorch.org/whl/torch_stable.html
 ```
 or please follow the instruction from [Pytorch](https://pytorch.org/)
 
+If you want to run object detection and distance measurement on a video file just use write the name of the video file to store it in the variable named "videofile" and pass the variable to cv2.VideoCapture() method as follows-
+``` python
+    cap = cv2.VideoCapture(videofile)
+```
+or if you want to run it on your webcam just put 0 in place of "videofile".
+``` python
+    cap = cv2.VideoCapture(0)
+```
 <hr>
 
 #### Theory
@@ -61,7 +79,7 @@ However, when you are working with a embedded device to make a compact design wh
 
 you don't always want to make your device heavier by adding unnnecessary hardware modules. To avoid such cases you can follow a more convinent and feasible apporoach. As you have already integrated a camera for object detection, you can use the depth information that camera uses to draw the bounding boxes for localizing objects to calculate the distance of that object from the camera.
 
-### How it works?
+### How the object detection works?
 From the initial part we understood that, we need to measure distance from an image we to localize it first to get the depth information.
 <b> Now, how actually localization works?</b>
 #### Localize objects with regression
@@ -74,6 +92,7 @@ From the initial part we understood that, we need to measure distance from an im
 Problem with this approch is that one part of the network is dedicated for region proposals. After the full connected layers the model tries to propose certain regions on that image which may contain object/objects. So it also requires a high qulaity classifier to filter out valid proposals which will definitely contains object/objects. Although these methos is very accurate but it comes with a big computational cost (low frame-rate) and that's why it is not suitable for embedded devices such as Arduino or Raspberry Pi which has less processing power.
 <hr>
 #### Localizing with Convolution neural networks
+
 Another way of doing object detection and to reduce this tedious work is by combining the previous two task into one network. Here, instead of proposing regions for every images the model is fed with a set of pre-defined boxes to look for objects. So prior to the training phase of a neural network some pre-defined rectangular boxes that represents some objects are given to the network to train with. So when a image is gone through the network, after the fully connected layer the trained model tries to match predefined boxes to objects on that image by using non-maxima suppression algorithm to completely tied. If the comparison crosses some threshold the model tries to draw the bounding box over the object. For example, in the case of the picture of white dog, the model knows what is the coordinates of the box of the dog object and when the image classification is done the model uses L2 distance to calculate the loss between the actual box coordinates that was predefined and the coordinate that the model gave so that it can perfectly draw the bounding box over the object on that image.
 
 The main idea is to using the convolutional feature maps from the later layers of a network to run small CONV filters over these feature maps to predict class scores and bounding box offsets.
@@ -82,5 +101,15 @@ Here, we are reusing the computation that is already made during classification 
 - Gather Activation from a particular layer or  layers to infer classification and location with FC layer or another CONV layer that works like a FC layer.
 - During prediction use algorithms like non-maxima suppression to filter multiple boxes around same object.
 - During training time use algorithms like IoU to relate the predictions during training the the ground truth.
- 
- \overline{OM} = \overline{ON} - \overline{NC} sin\theta 
+
+[Yolo](https://pjreddie.com/media/files/papers/YOLOv3.pdf) follows the strategy of Single Shot Detection. It uses a single activation map for prediction of classes and bounding boxes at a time that's why it called "You Only Look Once".
+
+Here pre-trained of <b> yolo-v3 </b> has used which can detect <b>80 different objects</b>. Although this model is faster but it doesn't give the reliability of predicting the actual object in a given frame/image. It's a kind of trade-off between accuracy and precision.
+
+#### How the distance measurement works?
+This formula is used for determing the distance 
+    distancei = (2 x 3.14 x 180) ÷ (w + h x 360) x 1000 + 3
+For measuring distance, atfirst we have to understand how a camera sees a object. 
+![Distance-Measurement](http://muizzer07.pythonanywhere.com/media/files/distance.png)
+Suppose a lens is located at point O. An object at point U is projected by the lens and generates an image plane at M. An image sensor is located at point N on the optical axis of the lens and is inclined by an angle of θ. The sensor and the image plane intersect at point C. The image projected on the sensor is clear only at the horizontal line that passes through point C. All the other parts of the image are blurred because they are defocused. If the length of NC can be calculated, the distance can be expressed as:
+        ![eq-1](http://muizzer07.pythonanywhere.com/media/files/Eq1.gif)
