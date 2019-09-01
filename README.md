@@ -1,6 +1,6 @@
 # Object Detection and Distance Measurement
 
-[![N|Solid](http://muizzer07.pythonanywhere.com/media/files/YOLO-m-ram-copy_RQByeS4.jpg)](https://pjreddie.com/darknet/yolo?style=centerme)
+[![N|Solid](http://muizzer07.pythonanywhere.com/media/files/YOLO-m-ram-copy_RQByeS4.jpg)](https://pjreddie.com/darknet/yolo/?style=centerme)
 
 
 ## Introduction
@@ -16,7 +16,7 @@
 <p align="center"> 
 For Single Objects
 </p> 
-![N|Multiple Object](http://muizzer07.pythonanywhere.com/media/files/pexels-photo-1108099.jpeg?style=centerme)
+![N|Single Object](http://muizzer07.pythonanywhere.com/media/files/puppy-1903313__340.jpg?style=centerme)
 <p align="center"> 
 For Multiple Objects
 </p> 
