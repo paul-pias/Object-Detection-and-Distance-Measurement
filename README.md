@@ -24,6 +24,7 @@
     or please follow the instruction from [Pytorch](https://pytorch.org/)
 
 <hr>
+
 #### Theory
 In a traditional image classification approach for object detection there are two well-known 
     strategies.
