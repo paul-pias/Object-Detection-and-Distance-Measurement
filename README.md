@@ -39,6 +39,12 @@ To execute object_dection.py you require Python version > 3.5 (depends if you ar
     $ pip3 install torch===1.2.0 torchvision===0.4.0 -f https://download.pytorch.org/whl/torch_stable.html
 ```
 or please follow the instruction from [Pytorch](https://pytorch.org/)
+#### For installing the "win32com.client" which is Text-to-Speech module for windows you have follow this
+First open the cmd as an administrator, then run
+        $ python -m pip install pywin32
+            import win32com.client
+            speaker = win32com.client.Dispatch("SAPI.SpVoice")
+            speaker.Speak("Good Morning")
 
 If you want to run object detection and distance measurement on a video file just use write the name of the video file to store it in the variable named "videofile" and pass the variable to cv2.VideoCapture() method as follows-
 ``` python
@@ -69,7 +75,9 @@ For multiple objects in a image there are two scenarios.
 </p> 
 
 ## Distance Measurement
-![N|Multiple Object](http://muizzer07.pythonanywhere.com/media/files/Ultrasonic-Sensor.jpg?style=centerme)
+<p align="center">
+<img src="http://muizzer07.pythonanywhere.com/media/files/Ultrasonic-Sensor.jpg">
+</p>
 <hr>
 Traditionally we measure distance of any object using Ultrasonic sensors such as HC-sr04 or other any high frquency devices which generate sound waves to calculates the distance it traverse.
 However, when you are working with a embedded device to make a compact design which has functionalities such as 
@@ -110,10 +118,37 @@ Here pre-trained of <b> yolo-v3 </b> has used which can detect <b>80 different o
 This formula is used for determing the distance 
     distancei = (2 x 3.14 x 180) ÷ (w + h x 360) x 1000 + 3
 For measuring distance, atfirst we have to understand how a camera sees a object. 
-![Distance-Measurement](http://muizzer07.pythonanywhere.com/media/files/sketch.png)
+<p align="center">
+<img src="http://muizzer07.pythonanywhere.com/media/files/sketch_N6c1Tb7.png">
+</p>
 
 You can relate this image the white dog picture where the dog was localized. Again we will get 4 numbers in the bounding box which is (x0,y0,width,height). Here x0,y0 is used to tiled or adjust the bounding box. Width and Height these two variable are used in the formula of measuring the object and actually describing the detail of the detected object/objects. Width and Height will vary depending on the distance of the object from the camera.
 
 As we know an image goes refracted when it goes through a lens because the ray of light can also enter the lens whereas in the case of mirror the light can reflected that's why we get exact reflection of the image. But in the case of lens image gets little stretched. The following image illustrates how the image and the corresponding angles looks when it enters through a lens.
+<p align="center">
+ <img src="http://muizzer07.pythonanywhere.com/media/files/lens-object-internal-scenario.png">
+</p>
+If we see there are three variable named:
+- do (Distance of object from the lens)
+- di (Distance of the refracted image from the convex lens)
+- f (focal length or focal distance)
 
-![Internal-Scenario-of-Lens](http://muizzer07.pythonanywhere.com/media/files/lens-object-internal-scenario.png)
+So the green line do represents the actual distance of the object from the convex length. And di gives a sense of how the actual image looks like. Now if we consider a triangle in the left side of the image with base <b> do </b> and draw a opposite triangle similar to the left side one. So the new base of the opposite triangle will also be do with the same perpendicular distance. Now if we compare the two triangles from right side we will see <b> do</b> and <b> di </b> is parallel and the angle that create on each side of both the triangle are opposite to each other. From which we can infer that, both the triangles on the right side is also similar. Now, as they are similar ratio of the corresponding sides are also similar. So do\di = A\B. Again if we compare between two triangles in right side of the image where opposite angles are equal and one angle of both the triangles are right angle (90°). So A:B is both hypotenuse of the similar triangle where both triangle has a right angle. So the new equation can be defined as :
+<p align="center">
+ <img src="http://muizzer07.pythonanywhere.com/media/files/Eq1_SycSI35.gif">
+</p>
+Now, if we derive from that equation we will find:-
+<p align="center"> 
+ <img src="http://muizzer07.pythonanywhere.com/media/files/Eqn2_QEqNXUR.gif">
+</p>
+And eventually will come to at 
+<p align="center">
+<img src="http://muizzer07.pythonanywhere.com/media/files/Eqn3.gif">
+</p>
+Where f is focal length or also called the arc length by using the following formula 
+<p align="center">
+<img src="http://muizzer07.pythonanywhere.com/media/files/Eqn4.gif">
+</p>
+we will get our final formula for calculating distance in Inchs. 
+
+* Notes - As mentioned earlier the yolo prefers precision over accuracy that's why the model predicts wrongs objects frquently.
