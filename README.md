@@ -16,11 +16,10 @@
 For Single Objects
     <img src ="http://muizzer07.pythonanywhere.com/media/files/puppy-1903313__340.jpg?style=centerme">
 </p> 
-![N|Single Object](http://muizzer07.pythonanywhere.com/media/files/puppy-1903313__340.jpg?style=centerme)
 
-![N|Multiple Object](http://muizzer07.pythonanywhere.com/media/files/pexels-photo-1108099.jpeg?style=centerme)
 <p align="center"> 
 For Multiple Objects
+    <img src ="http://muizzer07.pythonanywhere.com/media/files/pexels-photo-1108099.jpeg?style=centerme">
 </p> 
 
 ## Distance Measurement
