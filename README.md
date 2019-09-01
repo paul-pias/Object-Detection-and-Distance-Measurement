@@ -91,8 +91,7 @@ From the initial part we understood that, we need to measure distance from an im
  - And to put the bounding box perfectly over the image a linear regression classifier is needed to be trained which will output some correction factor.
 Problem with this approch is that one part of the network is dedicated for region proposals. After the full connected layers the model tries to propose certain regions on that image which may contain object/objects. So it also requires a high qulaity classifier to filter out valid proposals which will definitely contains object/objects. Although these methos is very accurate but it comes with a big computational cost (low frame-rate) and that's why it is not suitable for embedded devices such as Arduino or Raspberry Pi which has less processing power.
 <hr>
-
-#### Localizing object with Convolution neural networks
+#### Localizing with Convolution neural networks
 
 Another way of doing object detection and to reduce this tedious work is by combining the previous two task into one network. Here, instead of proposing regions for every images the model is fed with a set of pre-defined boxes to look for objects. So prior to the training phase of a neural network some pre-defined rectangular boxes that represents some objects are given to the network to train with. So when a image is gone through the network, after the fully connected layer the trained model tries to match predefined boxes to objects on that image by using non-maxima suppression algorithm to completely tied. If the comparison crosses some threshold the model tries to draw the bounding box over the object. For example, in the case of the picture of white dog, the model knows what is the coordinates of the box of the dog object and when the image classification is done the model uses L2 distance to calculate the loss between the actual box coordinates that was predefined and the coordinate that the model gave so that it can perfectly draw the bounding box over the object on that image.
 
@@ -111,9 +110,10 @@ Here pre-trained of <b> yolo-v3 </b> has used which can detect <b>80 different o
 This formula is used for determing the distance 
     distancei = (2 x 3.14 x 180) ÷ (w + h x 360) x 1000 + 3
 For measuring distance, atfirst we have to understand how a camera sees a object. 
-![Distance-Measurement](http://muizzer07.pythonanywhere.com/media/files/distance.png)
-Suppose a lens is located at point O. An object at point U is projected by the lens and generates an image plane at M. An image sensor is located at point N on the optical axis of the lens and is inclined by an angle of θ. The sensor and the image plane intersect at point C. The image projected on the sensor is clear only at the horizontal line that passes through point C. All the other parts of the image are blurred because they are defocused. If the length of NC can be calculated, the distance can be expressed as eq-1 & eq-2:
+![Distance-Measurement](http://muizzer07.pythonanywhere.com/media/files/sketch.png)
 
-   ![eq-1](http://muizzer07.pythonanywhere.com/media/files/Eq1.gif) <br>
-   ![eq-2](http://muizzer07.pythonanywhere.com/media/files/Eqn2.gif)
+You can relate this image the white dog picture where the dog was localized. Again we will get 4 numbers in the bounding box which is (x0,y0,width,height). Here x0,y0 is used to tiled or adjust the bounding box. Width and Height these two variable are used in the formula of measuring the object and actually describing the detail of the detected object/objects. Width and Height will vary depending on the distance of the object from the camera.
 
+As we know an image goes refracted when it goes through a lens because the ray of light can also enter the lens whereas in the case of mirror the light can reflected that's why we get exact reflection of the image. But in the case of lens image gets little stretched. The following image illustrates how the image and the corresponding angles looks when it enters through a lens.
+
+![Internal-Scenario-of-Lens](http://muizzer07.pythonanywhere.com/media/files/lens-object-internal-scenario.png)
