@@ -34,12 +34,12 @@ For multiple objects in a image there are two scenarios.
 - Object detection and localization
 - Object segmentation
 <p align="center"> 
-For Single Objects
+#### For Single Objects
     <img src ="http://muizzer07.pythonanywhere.com/media/files/puppy-1903313__340.jpg?style=centerme">
 </p> 
 
 <p align="center"> 
-For Multiple Objects
+#### For Multiple Objects
     <img src ="http://muizzer07.pythonanywhere.com/media/files/pexels-photo-1108099.jpeg?style=centerme">
 </p> 
 
