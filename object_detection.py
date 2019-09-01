@@ -219,8 +219,7 @@ def object_detection():
 
             list(map(lambda x: write(x, orig_im, classes, colors), output))
 
-
-            cv2.imshow("Object Detection Window", orig_im)
+            cv2.imshow("Object Detection Window", orig_im) #### Generating the window
             key = cv2.waitKey(1)
             if key & 0xFF == ord('q'):
                 break
@@ -238,8 +237,12 @@ def object_detection():
             # print(len(found))
             # draw_detections(frame, found)
             get_number_of_object, get_distance= draw_detections(frame,found)
-            person = ("{}".format(get_number_of_object)+ " " +l+" at {}".format(get_distance)+" centimeter")
-            print(person)
+            feedback = ("{}".format(get_number_of_object)+ " " +l+" at {}".format(get_distance)+" centimeter")
+            print(feedback)
+    # Stop the capture
+    cap.release()
+    # Destory the window
+    cv2.destroyAllWindows()
             
 if __name__ == "__main__":
     object_detection()
