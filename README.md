@@ -112,6 +112,6 @@ This formula is used for determing the distance
     distancei = (2 x 3.14 x 180) ÷ (w + h x 360) x 1000 + 3
 For measuring distance, atfirst we have to understand how a camera sees a object. 
 ![Distance-Measurement](http://muizzer07.pythonanywhere.com/media/files/distance.png)
-Suppose a lens is located at point O. An object at point U is projected by the lens and generates an image plane at M. An image sensor is located at point N on the optical axis of the lens and is inclined by an angle of θ. The sensor and the image plane intersect at point C. The image projected on the sensor is clear only at the horizontal line that passes through point C. All the other parts of the image are blurred because they are defocused. If the length of NC can be calculated, the distance can be expressed as:
+Suppose a lens is located at point O. An object at point U is projected by the lens and generates an image plane at M. An image sensor is located at point N on the optical axis of the lens and is inclined by an angle of θ. The sensor and the image plane intersect at point C. The image projected on the sensor is clear only at the horizontal line that passes through point C. All the other parts of the image are blurred because they are defocused. If the length of NC can be calculated, the distance can be expressed as eq-1 & eq-2:
 
-        ![eq-1](http://muizzer07.pythonanywhere.com/media/files/Eq1.gif) as eq-1
+        ![eq-1](http://muizzer07.pythonanywhere.com/media/files/Eq1.gif) 
