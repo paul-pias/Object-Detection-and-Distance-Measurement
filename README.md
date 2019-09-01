@@ -82,3 +82,5 @@ Here, we are reusing the computation that is already made during classification 
 - Gather Activation from a particular layer or  layers to infer classification and location with FC layer or another CONV layer that works like a FC layer.
 - During prediction use algorithms like non-maxima suppression to filter multiple boxes around same object.
 - During training time use algorithms like IoU to relate the predictions during training the the ground truth.
+ 
+ \overline{OM} = \overline{ON} - \overline{NC} sin\theta 
