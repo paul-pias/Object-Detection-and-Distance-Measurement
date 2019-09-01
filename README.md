@@ -14,6 +14,7 @@
         - Object segmentation
 <p align="center"> 
 For Single Objects
+    <img src ="http://muizzer07.pythonanywhere.com/media/files/puppy-1903313__340.jpg?style=centerme">
 </p> 
 ![N|Single Object](http://muizzer07.pythonanywhere.com/media/files/puppy-1903313__340.jpg?style=centerme)
 
