@@ -14,8 +14,10 @@ import pickle as pkl
 import argparse
 # import ConnectionServer ## Import it if you are using raspberrypi or any thrid party camera to detect object
 import os,sys,time,json
-from zeep import Client
 import math
+import win32com.client as wincl       #### Python's Text-to-speech (tts) engine for windows
+speak = wincl.Dispatch("SAPI.SpVoice")    #### This initiates the tts engine
+
 
 def get_test_input(input_dim, CUDA):
     """
@@ -104,25 +106,21 @@ def draw_detections(img, rects, thickness = 1):
     """
 
     count = 0
-    distance = 0.0
+    distancei = 0.0
     for x, y, w, h in rects:
         print(len(rects))
 
-        if len(rects) >= 0:
+        if len(rects) >= 0: ### Increase the value of count if there are more than one rectangle in a given frame
             count += 1
-            # person = ("There is {}".format(count)+" Person")
-            # print("Person found: ", count)
-        distancei = (2 * 3.14 * 180) / (w + h * 360) * 1000 + 3
-
-        #        distance = distancei *2.54
-        distance = math.floor(distancei / 2)
-        # print(count, distance)
-
+        distancei = (2 * 3.14 * 180) / (w + h * 360) * 1000 + 3 ### Distance measuring in Inch
+        # print(distancei)
+        # distance = distancei * 2.54
+        # print(distance)
         # the HOG detector returns slightly larger rectangles than the real objects.
         # so we slightly shrink the rectangles to get a nicer output.
         pad_w, pad_h = int(0.15*w), int(0.05*h)
         cv2.rectangle(img, (x+pad_w, y+pad_h), (x+w-pad_w, y+h-pad_h), (0, 255, 0), thickness)
-    return count, distance
+    return count, distancei
 
 def object_detection():
     """
@@ -237,8 +235,14 @@ def object_detection():
             # print(len(found))
             # draw_detections(frame, found)
             get_number_of_object, get_distance= draw_detections(frame,found)
-            feedback = ("{}".format(get_number_of_object)+ " " +l+" at {}".format(get_distance)+" centimeter")
-            print(feedback)
+            if get_number_of_object >=1 and get_distance!=0:
+                feedback = ("{}".format(get_number_of_object)+ " " +l+" at {}".format(round(get_distance))+"Inches")
+                speak.Speak(feedback)
+                print(feedback)
+            else:
+                feedback = ("{}".format("1")+ " " +l)
+                speak.Speak(feedback)
+                print(feedback)
     # Stop the capture
     cap.release()
     # Destory the window
