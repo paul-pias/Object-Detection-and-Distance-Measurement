@@ -134,7 +134,7 @@ You can relate this image the white dog picture where the dog was localized. Aga
 
 As we know an image goes refracted when it goes through a lens because the ray of light can also enter the lens whereas in the case of mirror the light can reflected that's why we get exact reflection of the image. But in the case of lens image gets little stretched. The following image illustrates how the image and the corresponding angles looks when it enters through a lens.
 <p align="center">
- <img src="http://muizzer07.pythonanywhere.com/media/files/lens-object-internal-scenario.png">
+ <img src="http://muizzer07.pythonanywhere.com/media/files/lens-object-internal-scenario_cg2o8yA.png">
 </p>
 If we see there are three variable named:
 - do (Distance of object from the lens)
