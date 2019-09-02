@@ -118,7 +118,10 @@ Here pre-trained of <b> yolo-v3 </b> has used which can detect <b>80 different o
 
 ### How the distance measurement works?
 This formula is used for determing the distance 
+
+``` python
     distancei = (2 x 3.14 x 180) ÷ (w + h x 360) x 1000 + 3
+```
 For measuring distance, atfirst we have to understand how a camera sees a object. 
 <p align="center">
 <img src="http://muizzer07.pythonanywhere.com/media/files/sketch_N6c1Tb7.png">
@@ -152,6 +155,9 @@ Where f is focal length or also called the arc length by using the following for
 <img src="http://muizzer07.pythonanywhere.com/media/files/Eqn4.gif">
 </p>
 we will get our final resultin Inchs from this formula of distance. 
+
+``` python
     distancei = (2 x 3.14 x 180) ÷ (w + h x 360) x 1000 + 3
+```
 
 * Notes - As mentioned earlier the yolo prefers precision over accuracy that's why the model predicts wrongs objects frquently.
