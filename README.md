@@ -64,6 +64,7 @@ In a traditional image classification approach for object detection there are tw
 For single object in a image there are two scenarios.
 - Classification
 - Localization
+
 For multiple objects in a image there are two scenarios.
 - Object detection and localization
 - Object segmentation
