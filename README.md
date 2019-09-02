@@ -62,7 +62,7 @@ or if you want to run it on your webcam just put 0 in place of "videofile".
 #### Theory
 In a traditional image classification approach for object detection there are two well-known strategies.
 
-sFor single object in a image there are two scenarios.
+For single object in a image there are two scenarios.
 - Classification
 - Localization
 
