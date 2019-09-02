@@ -41,10 +41,13 @@ To execute object_dection.py you require Python version > 3.5 (depends if you ar
 or please follow the instruction from [Pytorch](https://pytorch.org/)
 #### For installing the "win32com.client" which is Text-to-Speech module for windows you have follow this
 First open the cmd as an administrator, then run
-        $ python -m pip install pywin32
+``` python
+   $ python -m pip install pywin32
             import win32com.client
             speaker = win32com.client.Dispatch("SAPI.SpVoice")
             speaker.Speak("Good Morning")
+```
+        
 
 If you want to run object detection and distance measurement on a video file just use write the name of the video file to store it in the variable named "videofile" and pass the variable to cv2.VideoCapture() method as follows-
 ``` python
