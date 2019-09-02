@@ -61,7 +61,8 @@ or if you want to run it on your webcam just put 0 in place of "videofile".
 
 #### Theory
 In a traditional image classification approach for object detection there are two well-known strategies.
-For single object in a image there are two scenarios.
+
+sFor single object in a image there are two scenarios.
 - Classification
 - Localization
 
@@ -138,6 +139,7 @@ As we know an image goes refracted when it goes through a lens because the ray o
  <img src="http://muizzer07.pythonanywhere.com/media/files/lens-object-internal-scenario_cg2o8yA.png">
 </p>
 If we see there are three variable named:
+
 - do (Distance of object from the lens)
 - di (Distance of the refracted image from the convex lens)
 - f (focal length or focal distance)
