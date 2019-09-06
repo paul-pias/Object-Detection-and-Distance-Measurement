@@ -150,7 +150,7 @@ So the green line do represents the actual distance of the object from the conve
 </p>
 Now, if we derive from that equation we will find:-
 <p align="center"> 
- <img src="http://muizzer07.pythonanywhere.com/media/files/Eqn2_QEqNXUR.gif">
+ <img src="http://muizzer07.pythonanywhere.com/media/files/Eqn2_jRdlvju.gif">
 </p>
 And eventually will come to at 
 <p align="center">
