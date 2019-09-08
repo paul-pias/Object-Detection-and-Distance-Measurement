@@ -24,7 +24,7 @@ To execute object_dection.py you require Python version > 3.5 (depends if you ar
 
 ### Instalation
 ``` python
-    $ pip install requirements.txt
+    $ pip install -r requirements.txt
          or
     $ pip install opencv_python
     $ pip install numpy
@@ -47,7 +47,14 @@ First open the cmd as an administrator, then run
             speaker = win32com.client.Dispatch("SAPI.SpVoice")
             speaker.Speak("Good Morning")
 ```
-        
+
+First you need to clone the repository using gitbash (if gitbash is already installed) or you can download the zip file.
+``` python
+    $ git clone https://github.com/paul-pias/Object-Detection-and-Distance-Measurement.git
+```
+
+After unzipping the project, there are two ways to run this. If want to see your output in your browser execute the "app.py" script or else run "object_detection.py".
+
 
 If you want to run object detection and distance measurement on a video file just use write the name of the video file to store it in the variable named "videofile" and pass the variable to cv2.VideoCapture() method as follows-
 ``` python
