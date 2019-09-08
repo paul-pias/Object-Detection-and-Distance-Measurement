@@ -24,7 +24,7 @@ To execute object_dection.py you require Python version > 3.5 (depends if you ar
 
 ### Instalation
 ``` python
-    $ pip install requirements.txt
+    $ pip install -r requirements.txt
          or
     $ pip install opencv_python
     $ pip install numpy
@@ -47,7 +47,14 @@ First open the cmd as an administrator, then run
             speaker = win32com.client.Dispatch("SAPI.SpVoice")
             speaker.Speak("Good Morning")
 ```
-        
+
+First you need to clone the repository using gitbash (if gitbash is already installed) or you can download the zip file.
+``` python
+    $ git clone https://github.com/paul-pias/Object-Detection-and-Distance-Measurement.git
+```
+
+After unzipping the project, there are two ways to run this. If want to see your output in your browser execute the "app.py" script or else run "object_detection.py".
+
 
 If you want to run object detection and distance measurement on a video file just use write the name of the video file to store it in the variable named "videofile" and pass the variable to cv2.VideoCapture() method as follows-
 ``` python
@@ -61,6 +68,7 @@ or if you want to run it on your webcam just put 0 in place of "videofile".
 
 #### Theory
 In a traditional image classification approach for object detection there are two well-known strategies.
+
 For single object in a image there are two scenarios.
 - Classification
 - Localization
@@ -138,6 +146,7 @@ As we know an image goes refracted when it goes through a lens because the ray o
  <img src="http://muizzer07.pythonanywhere.com/media/files/lens-object-internal-scenario_cg2o8yA.png">
 </p>
 If we see there are three variable named:
+
 - do (Distance of object from the lens)
 - di (Distance of the refracted image from the convex lens)
 - f (focal length or focal distance)
@@ -148,7 +157,7 @@ So the green line do represents the actual distance of the object from the conve
 </p>
 Now, if we derive from that equation we will find:-
 <p align="center"> 
- <img src="http://muizzer07.pythonanywhere.com/media/files/Eqn2_QEqNXUR.gif">
+ <img src="http://muizzer07.pythonanywhere.com/media/files/Eqn2_jRdlvju.gif">
 </p>
 And eventually will come to at 
 <p align="center">
