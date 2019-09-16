@@ -38,22 +38,23 @@ To execute object_dection.py you require Python version > 3.5 (depends if you ar
 ``` python
     $ pip3 install torch===1.2.0 torchvision===0.4.0 -f https://download.pytorch.org/whl/torch_stable.html
 ```
-or please follow the instruction from [Pytorch](https://pytorch.org/)
+or please follow the instructions from [Pytorch](https://pytorch.org/)
 #### For installing the "win32com.client" which is Text-to-Speech module for windows you have follow this
 First open the cmd as an administrator, then run
 ``` python
    $ python -m pip install pywin32
+   #After installing open your python shell and run
             import win32com.client
             speaker = win32com.client.Dispatch("SAPI.SpVoice")
             speaker.Speak("Good Morning")
 ```
 
-First you need to clone the repository using gitbash (if gitbash is already installed) or you can download the zip file.
+You need to clone the repository using gitbash (if gitbash is already installed) or you can download the zip file.
 ``` python
     $ git clone https://github.com/paul-pias/Object-Detection-and-Distance-Measurement.git
 ```
 
-After unzipping the project, there are two ways to run this. If want to see your output in your browser execute the "app.py" script or else run "object_detection.py".
+After unzipping the project, there are two ways to run this. If want to see your output in your browser execute the "app.py" script or else run "object_detection.py" to execute it locally.
 
 
 If you want to run object detection and distance measurement on a video file just use write the name of the video file to store it in the variable named "videofile" and pass the variable to cv2.VideoCapture() method as follows-
@@ -100,7 +101,7 @@ However, when you are working with a embedded device to make a compact design wh
 you don't always want to make your device heavier by adding unnnecessary hardware modules. To avoid such cases you can follow a more convinent and feasible apporoach. As you have already integrated a camera for object detection, you can use the depth information that camera uses to draw the bounding boxes for localizing objects to calculate the distance of that object from the camera.
 
 ### How the object detection works?
-From the initial part we understood that, we need to measure distance from an image we to localize it first to get the depth information.
+From the initial part we understood that, to measure distance from an image we to localize it first to get the depth information.
 <b> Now, how actually localization works?</b>
 
 #### Localize objects with regression
@@ -167,10 +168,10 @@ Where f is focal length or also called the arc length by using the following for
 <p align="center">
 <img src="http://muizzer07.pythonanywhere.com/media/files/Eqn4.gif">
 </p>
-we will get our final resultin Inchs from this formula of distance. 
+we will get our final result in "inchs" from this formula of distance. 
 
 ``` python
     distancei = (2 x 3.14 x 180) ÷ (w + h x 360) x 1000 + 3
 ```
 
-* Notes - As mentioned earlier the yolo prefers precision over accuracy that's why the model predicts wrongs objects frquently.
+* Notes - As mentioned earlier YOLO prefers precision over accuracy that's why the model predicts wrong objects frquently.
