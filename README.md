@@ -152,7 +152,7 @@ If we see there are three variable named:
 - di (Distance of the refracted image from the convex lens)
 - f (focal length or focal distance)
 
-So the green line do represents the actual distance of the object from the convex length. And di gives a sense of how the actual image looks like. Now if we consider a triangle in the left side of the image with base <b> do </b> and draw a opposite triangle similar to the left side one. So the new base of the opposite triangle will also be do with the same perpendicular distance. Now if we compare the two triangles from right side we will see <b> do</b> and <b> di </b> is parallel and the angle that create on each side of both the triangle are opposite to each other. From which we can infer that, both the triangles on the right side is also similar. Now, as they are similar ratio of the corresponding sides are also similar. So do\di = A\B. Again if we compare between two triangles in right side of the image where opposite angles are equal and one angle of both the triangles are right angle (90°). So A:B is both hypotenuse of the similar triangle where both triangle has a right angle. So the new equation can be defined as :
+So the green line <b>"do"</b> represents the actual distance of the object from the convex length. And <b>"di"</b> gives a sense of how the actual image looks like. Now if we consider a triangle in the left side of the image(new refracted image) with base <b> "do" </b> and draw a opposite triangle similar to the left side one. So the new base of the opposite triangle will also be do with the same perpendicular distance. Now if we compare the two triangles from right side we will see <b> "do"</b> and <b> "di" </b> is parallel and the angle that create on each side of both the triangle are opposite to each other. From which we can infer that, both the triangles on the right side is also similar. Now, as they are similar, ratio of the corresponding sides will be also similar. So do/di = A/B. Again if we compare between two triangles in right side of the image where opposite angles are equal and one angle of both the triangles are right angle (90°) (dark blue area). So A:B is both hypotenuse of the similar triangle where both triangle has a right angle. So the new equation can be defined as :
 <p align="center">
  <img src="http://muizzer07.pythonanywhere.com/media/files/Eq1_SycSI35.gif">
 </p>
@@ -174,4 +174,12 @@ we will get our final result in "inchs" from this formula of distance.
     distancei = (2 x 3.14 x 180) ÷ (w + h x 360) x 1000 + 3
 ```
 
-* Notes - As mentioned earlier YOLO prefers precision over accuracy that's why the model predicts wrong objects frquently.
+* Notes - As mentioned earlier YOLO prefers performance over accuracy that's why the model predicts wrong objects frquently.
+
+### Reference
+
+- [Real-Time Distance Measurement Using a Modified
+Camera ](https://sci-hub.tw/10.1109/SAS.2010.5439423)
+- [Real-time Distance Measurement Using Single Image](http://emaraic.com/blog/distance-measurement)
+- [Object image and focal distance relationship (proof of formula)](https://www.khanacademy.org/science/physics/geometric-optics/lenses/v/object-image-and-focal-distance-relationship-proof-of-formula)
+-[Distance or arc length from angular displacement](https://www.khanacademy.org/science/ap-physics-1/ap-centripetal-force-and-gravitation/introduction-to-uniform-circular-motion-ap/v/distance-or-arc-length-from-angular-displacement)
