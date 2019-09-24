@@ -65,6 +65,9 @@ or if you want to run it on your webcam just put 0 in place of "videofile".
 ``` python
     cap = cv2.VideoCapture(0)
 ```
+
+#### Note: 
+You have to use git-lfs to download the yolov3.weight file. However you can also download it from here [YOLOv3 @ Google-Drive](https://drive.google.com/drive/folders/1nN49gRqt5HvuMptfc0wRVcuLwiNmMD6u?usp=sharing
 <hr>
 
 #### Theory
