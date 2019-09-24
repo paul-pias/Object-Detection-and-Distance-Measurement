@@ -182,5 +182,4 @@ we will get our final result in "inchs" from this formula of distance.
 Camera ](https://sci-hub.tw/10.1109/SAS.2010.5439423)
 - [Real-time Distance Measurement Using Single Image](http://emaraic.com/blog/distance-measurement)
 - [Object image and focal distance relationship (proof of formula)](https://www.khanacademy.org/science/physics/geometric-optics/lenses/v/object-image-and-focal-distance-relationship-proof-of-formula)
-
--[Distance or arc length from angular displacement](https://www.khanacademy.org/science/ap-physics-1/ap-centripetal-force-and-gravitation/introduction-to-uniform-circular-motion-ap/v/distance-or-arc-length-from-angular-displacement)
+- [Distance or arc length from angular displacement](https://www.khanacademy.org/science/ap-physics-1/ap-centripetal-force-and-gravitation/introduction-to-uniform-circular-motion-ap/v/distance-or-arc-length-from-angular-displacement)
