@@ -221,7 +221,3 @@ class Camera(object):
             else:
                 self.video = cv2.VideoCapture(self.file_path)
                 return open('outputs/temp.jpg', 'rb').read()
-
-if __name__ == '__main__':
-    vc = Camera()
-    vc.get_frame()
