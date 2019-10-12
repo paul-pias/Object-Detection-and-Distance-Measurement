@@ -95,7 +95,7 @@ For multiple objects in a image there are two scenarios.
 <img src="http://muizzer07.pythonanywhere.com/media/files/Ultrasonic-Sensor.jpg">
 </p>
 <hr>
-Traditionally we measure distance of any object using Ultrasonic sensors such as HC-sr04 or other any high frquency devices which generate sound waves to calculates the distance it traverse.
+Traditionally we measure distance of any object using Ultrasonic sensors such as HC-sr04 or any other high frquency devices which generate sound waves to calculates the distance it traverse.
 However, when you are working with a embedded device to make a compact design which has functionalities such as 
 
 - Object detection (with camera) and 
