@@ -9,7 +9,7 @@ app = Flask(__name__)
 camera = Camera(0)
 @app.route("/")
 def main():
-    return render_template("index.html")
+    return render_template("test.html")
 
 def gen(camera):
     while True:
