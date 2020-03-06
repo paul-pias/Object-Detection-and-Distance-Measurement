@@ -158,27 +158,7 @@ def object_detection():
     inp_dim = int(model.net_info["height"])
     assert inp_dim % 32 == 0
     assert inp_dim > 32
-    id = 0
-    cap = WebcamVideoStream(src = id).start()   #### If you are using your default webcam then use 0 as a source and for usbcam use 1
-    processors = []
-    def frame_render(queue_from_cam):
-        """
-            input : queue_from_cam
-        """
-        
-        frame = cap.read()
-        print(width)
-        frame = cv2.resize(frame,(width,height))
-        queue_from_cam.put(frame)
     
-    for i in range(os.cpu_count()):
-        processors.append(threading.Thread(target=frame_render, args=(q,)))
-    for process in processors:
-        process.start()
-    for process in processors:
-        process.join()
-    frame = q.get()
-    q.task_done()
     if CUDA:
         model.cuda()
 
@@ -202,10 +182,11 @@ def object_detection():
     count = 0
     frames = 0
     start = time.time()
-
+    cap = cv2.VideoCapture(0)
     # while cap.isOpened():
         # ret, frame = cap.read()
     while True:
+        ret, frame = cap.read()
         # if ret:
         img, orig_im, dim = prep_image(frame, inp_dim)  #### Pre-processing part of every frame that came from the source
         im_dim = torch.FloatTensor(dim).repeat(1,2)
