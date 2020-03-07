@@ -133,4 +133,5 @@ class ObjectDetection:
             continue
 
 if __name__ == "__main__":
-    ObjectDetection(0).main()
+    id = 0
+    ObjectDetection(id).main()
