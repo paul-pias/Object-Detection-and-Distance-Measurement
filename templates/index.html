@@ -1,23 +1,16 @@
-<html>
-    <head>
-    <style>
-    body {
-        display:block;
-        background: url("E:\Github\Flask\images.png"); 
-    }
-    h1{
-        text-align: center;
-        text-decoration: underline;
-        text-transform: uppercase;
-    }
-    </style>
-    <title>Object Detection & Distance Measurement</title>
-    </head>
-    <body>
-    
-    <h1 align = "center">Object Detection & Distance Measurement</h1>
-    <p align ="center">
-    <img src="{{ url_for('video_feed') }}">
-    </p>
-    </body>
-</html>
+{% extends 'base.html' %} {% block content %}
+
+
+<!-- 1st Column -->
+<div class="columns">
+    <div class="column is-narrow">
+        <div class="box" style="width: 500px;">
+            <p class="title is-5">Camera - 01</p>
+            <hr>
+            <img id="bg" width=640px height=360px src="{{ url_for('video_feed') }}">
+            <hr>
+
+        </div>
+    </div>
+    <hr>
+    {% endblock %}
