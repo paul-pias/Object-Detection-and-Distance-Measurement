@@ -8,6 +8,7 @@
  - Object detection from live video frame, in any video file or in a image
  - Counting the number of objects in a frame
  - Measuring the distance of object using depth information
+ - Inferece on Multiple Camera feed at a time
  
 For object detection YOLO-V3 has been used which is able to detect 80 different objects. Some of those are-
 - person
@@ -44,9 +45,9 @@ First open the cmd as an administrator, then run
 ``` python
    $ python -m pip install pywin32
    #After installing open your python shell and run
-            import win32com.client
-            speaker = win32com.client.Dispatch("SAPI.SpVoice")
-            speaker.Speak("Good Morning")
+      import win32com.client
+      speaker = win32com.client.Dispatch("SAPI.SpVoice")
+      speaker.Speak("Good Morning")
 ```
 
 You need to clone the repository using gitbash (if gitbash is already installed) or you can download the zip file.
@@ -57,15 +58,14 @@ You need to clone the repository using gitbash (if gitbash is already installed)
 After unzipping the project, there are two ways to run this. If want to see your output in your browser execute the "app.py" script or else run "object_detection.py" to execute it locally.
 
 
-If you want to run object detection and distance measurement on a video file just use write the name of the video file to store it in the variable named "videofile" and pass the variable to cv2.VideoCapture() method as follows-
+If you want to run object detection and distance measurement on a video file just write the name of the video file to variable <b>id</b> in either "app.py" or "object_detection.py" or if you want to run it on your webcam just put 0 in <b>id</b>.
+
+However, if you want to run the infeence on a feed of <b>IP Camera </b>, use the following convention while assigning it to the variable <b>"id"</b>
 ``` python
-    cap = cv2.VideoCapture(videofile)
-```
-or if you want to run it on your webcam just put 0 in place of "videofile".
-``` python
-    cap = cv2.VideoCapture(0)
+    "rtsp://assigned_name_of_the_camera:assigned_password@camer_ip/"
 ```
 
+You can check the performance on differet weights of YOLO which I have added on google drive and also available in [YOLO](https://pjreddie.com/darknet/yolo/?style=centerme)
 #### Note: 
 You have to use git-lfs to download the yolov3.weight file. However you can also download it from here [YOLOv3 @ Google-Drive](https://drive.google.com/drive/folders/1nN49gRqt5HvuMptfc0wRVcuLwiNmMD6u?usp=sharing)
 <hr>
