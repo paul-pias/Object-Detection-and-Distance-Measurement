@@ -27,7 +27,7 @@ To execute object_dection.py you require Python version > 3.5 (depends if you ar
 ``` python
     $ pip install -r requirements.txt
          or
-    $ pip install opencv_python
+    $ pip install opencv-python
     $ pip install numpy
     $ pip install pandas
     $ pip install matplotlib
@@ -66,6 +66,37 @@ However, if you want to run the infeence on a feed of <b>IP Camera </b>, use the
 ```
 
 You can check the performance on differet weights of YOLO which I have added on google drive and also available in [YOLO](https://pjreddie.com/darknet/yolo/?style=centerme)
+
+For multiple camera support you need to add few codes as follows in app.py-
+
+``` python
+   def simulate(camera):
+       while True:
+           frame = camera.main()
+           if frame != "":
+               yield (b'--frame\r\n'
+                   b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')
+
+   @app.route('/video_simulate')
+   def video_simulate():
+       id = 0
+       return Response(gen(ObjectDetection(id)), mimetype='multipart/x-mixed-replace; boundary=frame')
+```
+
+Depending on how many feed you need, you have to add the two methods in "app.py" with different names and add a section in index.html.
+
+``` html
+<div class="column is-narrow">
+        <div class="box" style="width: 500px;">
+            <p class="title is-5">Camera - 01</p>
+            <hr>
+            <img id="bg" width=640px height=360px src="{{ url_for('video_simulate') }}">
+            <hr>
+
+        </div>
+    </div>
+    <hr>
+```
 #### Note: 
 You have to use git-lfs to download the yolov3.weight file. However you can also download it from here [YOLOv3 @ Google-Drive](https://drive.google.com/drive/folders/1nN49gRqt5HvuMptfc0wRVcuLwiNmMD6u?usp=sharing)
 <hr>
