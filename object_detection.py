@@ -19,7 +19,6 @@ torch.multiprocessing.set_start_method('spawn', force=True)
 def prep_image(img, inp_dim):
     """
     Prepare image for inputting to the neural network.
-
     Returns a Variable
     """
     orig_im = img
@@ -83,7 +82,8 @@ class ObjectDetection:
         q = queue.Queue()
         while True:
             def frame_render(queue_from_cam):
-                frame = self.cap.read()
+                frame = self.cap.read() # If you capture stream using opencv (cv2.VideoCapture()) the use the following line
+                # ret, frame = self.cap.read()
                 frame = cv2.resize(frame,(self.width, self.height))
                 queue_from_cam.put(frame)
             cam = threading.Thread(target=frame_render, args=(q,))
@@ -111,24 +111,20 @@ class ObjectDetection:
                     output[:,[1,3]] *= frame.shape[1]
                     output[:,[2,4]] *= frame.shape[0]
                     list(map(lambda x: write(x, frame, self.classes, self.colors),output))
-                    cv2.imshow("Object Detection Window", frame)
                     x,y,w,h = b_boxes["bbox"][0],b_boxes["bbox"][1], b_boxes["bbox"][2], b_boxes["bbox"][3]
                     distance = (2 * 3.14 * 180) / (w + h * 360) * 1000 + 3 ### Distance measuring in Inch
                     feedback = ("{}".format(labels["Current Object"])+ " " +"is"+" at {} ".format(round(distance))+"Inches")
-                    speak.Speak(feedback)
+                    # speak.Speak(feedback)     # If you are running this on linux based OS kindly use espeak. Using this speaking library in winodws will add unnecessary latency 
                     print(feedback)
-                
-                
-                
             except:
                 pass
             fps.update()
             fps.stop()
             print("[INFO] elasped time: {:.2f}".format(fps.elapsed()))
             print("[INFO] approx. FPS: {:.1f}".format(fps.fps()))
-            
-            key = cv2.waitKey(1)
-            if key & 0xFF == ord('q'):
+            frame = cv2.putText(frame, str("{:.2f} Inches".format(distance)), (x,y), cv2.FONT_HERSHEY_DUPLEX, 0.6, (0,0,255), 1, cv2.LINE_AA)
+            cv2.imshow("Object Detection Window", frame)
+            if cv2.waitKey(1) & 0xFF == ord('q'):
                 break
             continue
 
