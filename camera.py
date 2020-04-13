@@ -105,26 +105,23 @@ class ObjectDetection:
                 pass
             else:
                 output[:,1:5] = torch.clamp(output[:,1:5], 0.0, float(self.inp_dim))/self.inp_dim
-            
+
     #            im_dim = im_dim.repeat(output.size(0), 1)
                 output[:,[1,3]] *= frame.shape[1]
                 output[:,[2,4]] *= frame.shape[0]
                 list(map(lambda x: write(x, frame, self.classes, self.colors),output))
-                # cv2.imshow("Object Detection Window", frame)
                 x,y,w,h = b_boxes["bbox"][0],b_boxes["bbox"][1], b_boxes["bbox"][2], b_boxes["bbox"][3]
                 distance = (2 * 3.14 * 180) / (w + h * 360) * 1000 + 3 ### Distance measuring in Inch
                 feedback = ("{}".format(labels["Current Object"])+ " " +"is"+" at {} ".format(round(distance))+"Inches")
-                speak.Speak(feedback)
-                print(feedback)
-            
-            
-            
+                # speak.Speak(feedback)     # If you are running this on linux based OS kindly use espeak. Using this speaking library in winodws will add unnecessary latency 
+#                 print(feedback)
         except:
             pass
         fps.update()
         fps.stop()
         print("[INFO] elasped time: {:.2f}".format(fps.elapsed()))
         print("[INFO] approx. FPS: {:.1f}".format(fps.fps()))
+        frame = cv2.putText(frame, str("{:.2f} Inches".format(distance)), (x,y), cv2.FONT_HERSHEY_DUPLEX, 0.6, (0,0,255), 1, cv2.LINE_AA)
         ret, jpeg = cv2.imencode('.jpg', frame)
         return jpeg.tostring()
 
