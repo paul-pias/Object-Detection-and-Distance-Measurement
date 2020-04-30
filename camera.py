@@ -35,20 +35,40 @@ def write(bboxes, img, classes, colors):
     """
         Draws the bounding box in every frame over the objects that the model detects
     """
-    x = bboxes
+    class_idx = bboxes
     bboxes = bboxes[1:5]
     bboxes = bboxes.cpu().data.numpy()
     bboxes = bboxes.astype(int)
     b_boxes.update({"bbox":bboxes.tolist()})
     # bboxes = bboxes + [150,100,200,200] # personal choice you can modify this to get distance as accurate as possible
     bboxes = torch.from_numpy(bboxes)
-    cls = int(x[-1])
+    cls = int(class_idx[-1])
     label = "{0}".format(classes[cls])
     labels.update({"Current Object":label})
     color = random.choice(colors)
-    img = cv2.rectangle(img, (bboxes[0],bboxes[1]),(bboxes[2],bboxes[3]), color, 1)
-    # label_draw = cv2.rectangle(img, (bboxes[0]-2, bboxes[3]+25), (bboxes[2]+2,bboxes[3]), color, -1)
-    img = cv2.putText(img, label, (bboxes[0]+2,bboxes[3]+20), cv2.FONT_HERSHEY_PLAIN, 1, [225, 255, 255], 1)
+
+    ## Put text configuration on frame
+    text_str = '%s' % (label) 
+    font_face = cv2.FONT_HERSHEY_DUPLEX
+    font_scale = 0.6
+    font_thickness = 1
+    text_w, text_h = cv2.getTextSize(text_str, font_face, font_scale, font_thickness)[0]
+    text_pt = (bboxes[0], bboxes[1] - 3)
+    text_color = [255, 255, 255]
+
+    
+    ## Distance Meaasurement for each bounding box
+    x, y, w, h = bboxes[0], bboxes[1], bboxes[2], bboxes[3]
+    ## item() is used to retrieve the value from the tensor
+    distance = (2 * 3.14 * 180) / (w.item()+ h.item() * 360) * 1000 + 3 ### Distance measuring in Inch 
+    feedback = ("{}".format(labels["Current Object"])+ " " +"is"+" at {} ".format(round(distance))+"Inches")
+    # # speak.Speak(feedback)     # If you are running this on linux based OS kindly use espeak. Using this speaking library in winodws will add unnecessary latency 
+    print(feedback)
+    
+    cv2.putText(img, str("{:.2f} Inches".format(distance)), (text_w+x,y), cv2.FONT_HERSHEY_DUPLEX, font_scale, (0,255,0), font_thickness, cv2.LINE_AA)
+    cv2.rectangle(img, (bboxes[0],bboxes[1]),(bboxes[2] + text_w -30,bboxes[3]), color, 2)
+    cv2.putText(img, text_str, text_pt, font_face, font_scale, text_color, font_thickness, cv2.LINE_AA)
+
     return img
 
 class ObjectDetection:
@@ -69,8 +89,8 @@ class ObjectDetection:
         self.model.load_weights(self.weightsfile)
         self.model.net_info["height"] = 160
         self.inp_dim = int(self.model.net_info["height"])
-        self.width = 640 #640#
-        self.height = 480 #360#
+        self.width = 1280 #640#
+        self.height = 720 #360#
         print("Loading network.....")
         if self.CUDA:
             self.model.cuda()
@@ -109,12 +129,8 @@ class ObjectDetection:
     #            im_dim = im_dim.repeat(output.size(0), 1)
                 output[:,[1,3]] *= frame.shape[1]
                 output[:,[2,4]] *= frame.shape[0]
-                list(map(lambda x: write(x, frame, self.classes, self.colors),output))
-                x,y,w,h = b_boxes["bbox"][0],b_boxes["bbox"][1], b_boxes["bbox"][2], b_boxes["bbox"][3]
-                distance = (2 * 3.14 * 180) / (w + h * 360) * 1000 + 3 ### Distance measuring in Inch
-                feedback = ("{}".format(labels["Current Object"])+ " " +"is"+" at {} ".format(round(distance))+"Inches")
-                # speak.Speak(feedback)     # If you are running this on linux based OS kindly use espeak. Using this speaking library in winodws will add unnecessary latency 
-#                 print(feedback)
+                list(map(lambda boxes: write(boxes, frame, self.classes, self.colors),output))
+
         except:
             pass
         fps.update()
