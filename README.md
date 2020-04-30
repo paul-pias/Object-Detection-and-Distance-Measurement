@@ -32,6 +32,7 @@ To execute object_dection.py you require Python version > 3.5 (depends if you ar
     $ pip install pandas
     $ pip install matplotlib
     $ pip install Pillow
+    $ pip install imutils
 ```
 <hr>
 
