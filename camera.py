@@ -16,6 +16,14 @@ speak = wincl.Dispatch("SAPI.SpVoice")    #### This initiates the tts engine
 
 torch.multiprocessing.set_start_method('spawn', force=True)
 
+##  Setting up torch for gpu utilization
+if torch.cuda.is_available():
+    torch.backends.cudnn.enabled = True 
+    torch.backends.cudnn.benchmark = True
+    torch.backends.cudnn.deterministic = True
+    torch.set_default_tensor_type('torch.cuda.FloatTensor')
+
+
 def prep_image(img, inp_dim):
     """
     Prepare image for inputting to the neural network.
