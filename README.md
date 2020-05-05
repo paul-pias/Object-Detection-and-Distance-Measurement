@@ -102,6 +102,9 @@ Depending on how many feed you need, you have to add the two methods in "app.py"
 You have to use git-lfs to download the yolov3.weight file. However you can also download it from here [YOLOv3 @ Google-Drive](https://drive.google.com/drive/folders/1nN49gRqt5HvuMptfc0wRVcuLwiNmMD6u?usp=sharing)
 <hr>
 
+## Update
+You can also use Yolact++ as a object detector using [this](https://github.com/paul-pias/Social-Distance-Monitoring) repo.
+
 #### Theory
 In a traditional image classification approach for object detection there are two well-known strategies.
 
