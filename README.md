@@ -21,6 +21,15 @@ For object detection YOLO-V3 has been used which is able to detect 80 different 
 - backpack and so on.
 
 ### User Instruction
+
+**There is a new update with [yolov4 new release](https://github.com/Tianxiaomo/pytorch-YOLOv4). All you have to do a simple step which is after downloading the project run the following command and follow the rest of the process as it is.**
+
+  ```
+    cd YOLOv4
+  ```
+
+
+
 To execute object_dection.py you require Python version > 3.5 (depends if you are using gpu or not) and have to install the following libraries.
 
 ### Instalation
