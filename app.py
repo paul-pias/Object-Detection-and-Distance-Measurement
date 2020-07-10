@@ -24,4 +24,4 @@ def video_feed():
 
 if __name__ == '__main__':
     # Serve the app with gevent
-    app.run(host='0.0.0.0', threaded=True, debug = True)
+    app.run(host='127.0.0.1', threaded=True, debug = True)
