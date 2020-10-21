@@ -223,6 +223,14 @@ we will get our final result in "inchs" from this formula of distance.
 
 * Notes - As mentioned earlier YOLO prefers performance over accuracy that's why the model predicts wrong objects frquently.
 
+## If anyone using this code for any kind of publications, kindly cite this work.
+
+M. A. Khan, P. Paul, M. Rashid, M. Hossain and M. A. R. Ahad, "An AI-Based Visual Aid With Integrated Reading Assistant for the Completely Blind," in IEEE Transactions on Human-Machine Systems.
+doi: 10.1109/THMS.2020.3027534
+
+
+
+
 ### Reference
 
 - [Real-Time Distance Measurement Using a Modified
