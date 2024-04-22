@@ -10,7 +10,7 @@
  - Measuring the distance of an object using depth information
  - Inference on Multiple Camera feed at a time
  
-For object detection, YOLO-V3 has been used, which is able to detect 80 different objects. Some of those are-
+For object detection, YOLO-V3 has been used, which can detect 80 different objects. Some of those are-
 - person
 - car
 - bus
@@ -30,12 +30,12 @@ For object detection, YOLO-V3 has been used, which is able to detect 80 differen
     cd YOLOv4
   ```
 
-You can also use Yolact++ as a object detector using [this](https://github.com/paul-pias/Social-Distance-Monitoring) repo.
+You can also use Yolact++ as an object detector using [this] repo (https://github.com/paul-pias/Social-Distance-Monitoring).
 
 
-To execute object_dection.py, you require Python version > 3.5 (depends if you are using gpu or not) and have to install the following libraries.
+To execute object_dection.py, you require Python version > 3.5 (depending on whether you are using GPU or not) and have to install the following libraries.
 
-### Instalation
+### Installation
 ``` python
     $ pip install -r requirements.txt
          or
@@ -54,7 +54,7 @@ To execute object_dection.py, you require Python version > 3.5 (depends if you a
 ```
 or please follow the instructions from [Pytorch](https://pytorch.org/)
 #### For installing the "win32com.client" which is Text-to-Speech module for windows you have follow this
-First open the cmd as an administrator, then run
+First, open the cmd as an administrator, then run
 ``` python
    $ python -m pip install pywin32
    #After installing, open your Python shell and run
@@ -63,7 +63,7 @@ First open the cmd as an administrator, then run
       speaker.Speak("Good Morning")
 ```
 
-You need to clone the repository using git bash (if git bash is already installed), or you can download the zip file.
+You need to clone the repository using git bash (if git bash has already been installed), or you can download the zip file.
 ``` python
     $ git clone https://github.com/paul-pias/Object-Detection-and-Distance-Measurement.git
 ```
@@ -71,7 +71,7 @@ You need to clone the repository using git bash (if git bash is already installe
 After unzipping the project, there are two ways to run this. If you want to see your output in your browser, execute the "app.py" script or run "object_detection.py" to execute it locally.
 
 
-If you want to run object detection and distance measurement on a video file, just write the name of the video file to variable <b>id</b> in either "app.py" or "object_detection.py" or if you want to run it on your webcam just put 0 in <b>id</b>.
+If you want to run object detection and distance measurement on a video file, write the name of the video file to variable <b>id</b> in either "app.py" or "object_detection.py" or if you want to run it on your webcam just put 0 in <b>id</b>.
 
 However, if you want to run the inference on a feed of <b>IP Camera </b>, use the following convention while assigning it to the variable <b>"id"</b>
 ``` python
@@ -80,7 +80,7 @@ However, if you want to run the inference on a feed of <b>IP Camera </b>, use th
 
 You can check the performance on different weights of YOLO, which are available in [YOLO](https://pjreddie.com/darknet/yolo/?style=centerme)
 
-For multiple camera support, you need to add a few codes as follows in app.py-
+For multiple camera support, you need to add a few lines of codes as follows in app.py-
 
 ``` python
    def simulate(camera):
@@ -115,13 +115,13 @@ You have to use git-lfs to download the yolov3.weight file. However you can also
 <hr>
 
 #### Theory
-In a traditional image classification approach for object detection, there are two well-known strategies.
+There are two well-known strategies in a traditional image classification approach for object detection.
 
-For a single object in an image, there are two scenarios.
+There are two scenarios for a single object in an image.
 - Classification
 - Localization
 
-For multiple objects in an image, there are two scenarios.
+There are two scenarios for multiple objects in an image.
 - Object detection and localization
 - Object segmentation
 <p align="center"> 
@@ -139,7 +139,7 @@ For multiple objects in an image, there are two scenarios.
 <img src="http://muizzer07.pythonanywhere.com/media/files/Ultrasonic-Sensor.jpg">
 </p>
 <hr>
-Traditionally we measure the distance of any object using Ultrasonic sensors such as HC-sr04 or any other high-frequency devices which generate sound waves to calculate the distance it traverses.
+Traditionally, we measure the distance of any object using Ultrasonic sensors such as HC-sr04 or any other high-frequency devices that generate sound waves to calculate the distance it traverses.
 However, when you are working with an embedded device to make a compact design that has functionalities such as 
 
 - Object detection (with camera) and 
